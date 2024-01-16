@@ -262,13 +262,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument(
         '--model-name', 
-        choices=[
-            'open-web-math/llemma_7b',
-            'open-web-math/llemma_34b',
-            'codellama/CodeLlama-7b-hf',
-            'codellama/CodeLlama-34b-hf'
-        ],
-        required=True
+        type=str,
     )
     parser.add_argument(
         '--dataset-name',
