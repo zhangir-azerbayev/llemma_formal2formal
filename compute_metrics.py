@@ -1,13 +1,15 @@
 import json
 import glob
+import argparse
+import os
 
-for setting in [
-    'codellama7b_minif2f_test',
-    'codellama34b_minif2f_test',
-    'llemma7b_minif2f_test',
-    'llemma34b_minif2f_test'
-]:
-    fs = [json.load(open(x)) for x in glob.glob('./output/%s/*.json' % setting)]
+parser = argparse.ArgumentParser()
+parser.add_argument('--input_dirs', nargs='+')
+
+args = parser.parse_args()
+
+for setting in args.input_dirs:
+    fs = [json.load(open(x)) for x in glob.glob(os.path.join(setting, '*.json'))]
     n = 0
     ns = 0
     for f in fs:
