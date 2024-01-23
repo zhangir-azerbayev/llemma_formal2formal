@@ -5,7 +5,7 @@
 #SBATCH --ntasks-per-node=8          # Crucial - only 1 task per dist per node!
 #SBATCH --cpus-per-task=10          # Number of cores per tasks
 #SBATCH --gres=gpu:8                 # Number of gpus
-#SBATCH --array=1-3
+#SBATCH --array=6-7
 #SBATCH --output=slurmouts/llemma_f_7b_v0.1_valid_%a_%A.out      # Set this dir where you want slurm outs to go
 #SBATCH --error=slurmouts/llemma_f_7b_v0.1_valid_%a_%A.out      # Set this dir where you want slurm outs to go
 #SBATCH --exclusive      # Turn off node sharing
@@ -31,6 +31,10 @@ models=(\
     "zhangirazerbayev/llemma_f_7b_v0.1_altmix0" \
     "zhangirazerbayev/llemma_f_7b_v0.1_altmix1" \
     "zhangirazerbayev/llemma_f_7b_v0.1_4epoch" \
+    "zhangirazerbayev/llemma_f_7b_v0.1_altmix2" \
+    "zhangirazerbayev/llemma_f_7b_v0.1_multilingual" \
+    "zhangirazerbayev/llemma_f_7b_v0.1_altmix2_altdata_0" \
+    "zhangirazerbayev/llemma_f_7b_v0.1_altmix3" \
 )
 
 MODEL=${models[$SLURM_ARRAY_TASK_ID]}
